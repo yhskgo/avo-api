@@ -1,0 +1,118 @@
+<svg viewBox="0 0 1000 700" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1000" height="700" fill="#f8f9fa"/>
+  
+  <!-- Title -->
+  <text x="500" y="30" text-anchor="middle" font-size="24" font-weight="bold" fill="#2c3e50">AVO API System Architecture</text>
+  
+  <!-- Client Layer -->
+  <rect x="50" y="70" width="150" height="80" rx="10" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+  <text x="125" y="95" text-anchor="middle" font-size="14" font-weight="bold" fill="#1976d2">📱 Client</text>
+  <text x="125" y="115" text-anchor="middle" font-size="12" fill="#1976d2">Postman</text>
+  <text x="125" y="130" text-anchor="middle" font-size="12" fill="#1976d2">Frontend</text>
+  
+  <!-- Django API Layer -->
+  <rect x="300" y="70" width="200" height="80" rx="10" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2"/>
+  <text x="400" y="95" text-anchor="middle" font-size="14" font-weight="bold" fill="#7b1fa2">🌐 Django REST API</text>
+  <text x="400" y="115" text-anchor="middle" font-size="12" fill="#7b1fa2">Port: 8000</text>
+  <text x="400" y="130" text-anchor="middle" font-size="12" fill="#7b1fa2">CORS, Auth, Rate Limit</text>
+  
+  <!-- Application Services -->
+  <rect x="600" y="70" width="180" height="80" rx="10" fill="#e8f5e8" stroke="#388e3c" stroke-width="2"/>
+  <text x="690" y="95" text-anchor="middle" font-size="14" font-weight="bold" fill="#388e3c">💼 App Services</text>
+  <text x="690" y="115" text-anchor="middle" font-size="12" fill="#388e3c">Jobs Views</text>
+  <text x="690" y="130" text-anchor="middle" font-size="12" fill="#388e3c">Job Model</text>
+  
+  <!-- Database Layer -->
+  <rect x="50" y="250" width="180" height="100" rx="10" fill="#fce4ec" stroke="#c2185b" stroke-width="2"/>
+  <text x="140" y="275" text-anchor="middle" font-size="14" font-weight="bold" fill="#c2185b">🐘 PostgreSQL</text>
+  <text x="140" y="295" text-anchor="middle" font-size="12" fill="#c2185b">Jobs Table</text>
+  <text x="140" y="315" text-anchor="middle" font-size="12" fill="#c2185b">JSON Results</text>
+  <text x="140" y="335" text-anchor="middle" font-size="12" fill="#c2185b">event_id, status</text>
+  
+  <!-- Redis -->
+  <rect x="300" y="250" width="180" height="100" rx="10" fill="#ffebee" stroke="#d32f2f" stroke-width="2"/>
+  <text x="390" y="275" text-anchor="middle" font-size="14" font-weight="bold" fill="#d32f2f">🔴 Redis</text>
+  <text x="390" y="295" text-anchor="middle" font-size="12" fill="#d32f2f">Message Broker</text>
+  <text x="390" y="315" text-anchor="middle" font-size="12" fill="#d32f2f">Result Backend</text>
+  <text x="390" y="335" text-anchor="middle" font-size="12" fill="#d32f2f">Cache</text>
+  
+  <!-- Celery Worker -->
+  <rect x="550" y="250" width="180" height="100" rx="10" fill="#fff3e0" stroke="#f57c00" stroke-width="2"/>
+  <text x="640" y="275" text-anchor="middle" font-size="14" font-weight="bold" fill="#f57c00">👷 Celery Worker</text>
+  <text x="640" y="295" text-anchor="middle" font-size="12" fill="#f57c00">FIFO Queue</text>
+  <text x="640" y="315" text-anchor="middle" font-size="12" fill="#f57c00">guideline_queue</text>
+  <text x="640" y="335" text-anchor="middle" font-size="12" fill="#f57c00">Async Processing</text>
+  
+  <!-- GPT Service -->
+  <rect x="100" y="450" width="200" height="100" rx="10" fill="#e0f2f1" stroke="#00695c" stroke-width="2"/>
+  <text x="200" y="475" text-anchor="middle" font-size="14" font-weight="bold" fill="#00695c">🤖 GPT Service</text>
+  <text x="200" y="495" text-anchor="middle" font-size="12" fill="#00695c">OpenAI Integration</text>
+  <text x="200" y="515" text-anchor="middle" font-size="12" fill="#00695c">1. Generate Summary</text>
+  <text x="200" y="535" text-anchor="middle" font-size="12" fill="#00695c">2. Generate Checklist</text>
+  
+  <!-- OpenAI API -->
+  <rect x="400" y="450" width="180" height="100" rx="10" fill="#e8eaf6" stroke="#3f51b5" stroke-width="2"/>
+  <text x="490" y="475" text-anchor="middle" font-size="14" font-weight="bold" fill="#3f51b5">🧠 OpenAI API</text>
+  <text x="490" y="495" text-anchor="middle" font-size="12" fill="#3f51b5">GPT-4o-mini</text>
+  <text x="490" y="515" text-anchor="middle" font-size="12" fill="#3f51b5">Summary Chain</text>
+  <text x="490" y="535" text-anchor="middle" font-size="12" fill="#3f51b5">Checklist Chain</text>
+  
+  <!-- Monitoring -->
+  <rect x="650" y="450" width="180" height="100" rx="10" fill="#f1f8e9" stroke="#689f38" stroke-width="2"/>
+  <text x="740" y="475" text-anchor="middle" font-size="14" font-weight="bold" fill="#689f38">📊 Monitoring</text>
+  <text x="740" y="495" text-anchor="middle" font-size="12" fill="#689f38">Django Logs</text>
+  <text x="740" y="515" text-anchor="middle" font-size="12" fill="#689f38">Celery Logs</text>
+  <text x="740" y="535" text-anchor="middle" font-size="12" fill="#689f38">Flower Monitor</text>
+  
+  <!-- Flow Arrows -->
+  <!-- Client to Django -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+  </defs>
+  
+  <!-- Request Flow -->
+  <line x1="200" y1="110" x2="300" y2="110" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="250" y="105" text-anchor="middle" font-size="10" fill="#333">POST /jobs</text>
+  
+  <line x1="500" y1="110" x2="600" y2="110" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="550" y="105" text-anchor="middle" font-size="10" fill="#333">Process</text>
+  
+  <!-- Django to Database -->
+  <line x1="350" y1="150" x2="180" y2="250" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="250" y="200" text-anchor="middle" font-size="10" fill="#333">Save Job</text>
+  
+  <!-- Django to Redis -->
+  <line x1="400" y1="150" x2="390" y2="250" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="395" y="200" text-anchor="middle" font-size="10" fill="#333">Queue Task</text>
+  
+  <!-- Redis to Celery -->
+  <line x1="480" y1="300" x2="550" y2="300" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="515" y="295" text-anchor="middle" font-size="10" fill="#333">FIFO</text>
+  
+  <!-- Celery to GPT Service -->
+  <line x1="600" y1="350" x2="250" y2="450" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="400" y="400" text-anchor="middle" font-size="10" fill="#333">Process</text>
+  
+  <!-- GPT Service to OpenAI -->
+  <line x1="300" y1="500" x2="400" y2="500" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="350" y="495" text-anchor="middle" font-size="10" fill="#333">API Call</text>
+  
+  <!-- Results back to Database -->
+  <line x1="150" y1="450" x2="140" y2="350" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="100" y="400" text-anchor="middle" font-size="10" fill="#333">Save Results</text>
+  
+  <!-- Monitoring connections -->
+  <line x1="640" y1="350" x2="720" y2="450" stroke="#689f38" stroke-width="1" stroke-dasharray="5,5"/>
+  <line x1="400" y1="150" x2="700" y2="450" stroke="#689f38" stroke-width="1" stroke-dasharray="5,5"/>
+  
+  <!-- API Endpoints Box -->
+  <rect x="20" y="580" width="960" height="80" rx="5" fill="#ffffff" stroke="#ddd" stroke-width="1"/>
+  <text x="500" y="605" text-anchor="middle" font-size="16" font-weight="bold" fill="#333">API Endpoints</text>
+  <text x="100" y="625" font-size="12" fill="#333">• POST /api/jobs → Create job, return event_id (&lt; 200ms)</text>
+  <text x="100" y="645" font-size="12" fill="#333">• GET /api/jobs/{event_id} → Get job status and results</text>
+  <text x="500" y="625" font-size="12" fill="#666">Tech Stack: Python + Django + Celery + Redis + PostgreSQL + OpenAI</text>
+  <text x="500" y="645" font-size="12" fill="#666">Features: FIFO Queue, 2-Stage GPT Chain, Async Processing, Real-time Status</text>
+</svg>
