@@ -25,8 +25,13 @@ class JobModelTest(TestCase):
         """Test job string representation"""
         event_id = uuid.uuid4()
         job = Job.objects.create(event_id=event_id, status='pending')
-        self.assertTrue("Job" in str(job))
-        self.assertTrue("pending" in str(job))
+        job_str = str(job)
+        
+        # Job 문자열에 "Job"과 event_id가 포함되어야 함
+        self.assertIn("Job", job_str)
+        self.assertIn(str(event_id), job_str)
+        # status는 한국어로 표시됨 ("대기 중")
+        self.assertTrue("대기 중" in job_str or "pending" in job_str)
 
 
 class JobAPITest(APITestCase):
@@ -74,3 +79,16 @@ class JobAPITest(APITestCase):
         response = self.client.get(f'/api/jobs/{non_existent_id}')
         
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+    
+    def test_get_job_pending_status(self):
+        """Test pending job status"""
+        job = Job.objects.create(
+            event_id=uuid.uuid4(),
+            status='pending'
+        )
+        
+        response = self.client.get(f'/api/jobs/{job.event_id}')
+        
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['status'], 'pending')
+        self.assertIsNone(response.data.get('result'))
