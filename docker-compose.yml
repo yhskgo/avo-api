@@ -56,7 +56,7 @@ services:
 
   celery:
     build: .
-    command: celery -A avo_api worker --loglevel=info --queues=guideline_queue
+    command: celery -A avo_api worker --loglevel=info
     volumes:
       - .:/app
     environment:
