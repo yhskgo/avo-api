@@ -56,7 +56,7 @@ services:
 
   celery:
     build: .
-    command: celery -A avo_api worker --loglevel=info --queues=celery
+    command: celery -A avo_api worker --loglevel=info --queues=guideline_queue
     volumes:
       - .:/app
     environment:
@@ -70,10 +70,16 @@ services:
       - CELERY_BROKER_URL=redis://redis:6379/0
       - CELERY_RESULT_BACKEND=redis://redis:6379/0
       - REDIS_URL=redis://redis:6379/1
-      - OPENAI      - OPENAI    API_KEY:-your-opena      - OPENAe}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-your-openai-api-key-here}
     depends_on:
       db:
-        condition: service_healt        condition: ser  condition: service_health        condition: service    command: celery -A        conditio--port=5555
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  flower:
+    build: .
+    command: celery -A avo_api flower --port=5555
     ports:
       - "5555:5555"
     environment:
