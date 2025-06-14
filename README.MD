@@ -71,6 +71,7 @@ http://localhost:8000/api/docs/
 2. **Generate** actionable checklist from summary
 
 **AI Tools Used**:
+- **IDE:VSCode**:Python extensions for development environment and code debugging
 - **Claude**: Complete system architecture, code structure, testing framework, and Docker deployment setup
 - **Mermaid**: Interactive system architecture diagram
 - **OpenAPI**: Automatic API documentation with drf-spectacular  
