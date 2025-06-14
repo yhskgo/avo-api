@@ -5,7 +5,7 @@
 
 > Minimal backend API for automated guideline processing with AI-powered summarization and checklist generation.
 
-## System Architecture
+## System Architecture![AVO API Architecture](./docs/avo_api_architecture.png)
 
 ```mermaid
 graph TD
