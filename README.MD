@@ -5,29 +5,35 @@
 
 > Minimal backend API for automated guideline processing with AI-powered summarization and checklist generation.
 
-## System Architecture![AVO API Architecture](./docs/avo_api_architecture.png)
+## System Architecture![AVO API Architecture](./assests/avo_api_architecture.png)
 
 ```mermaid
-graph TD
-    A[Client] -->|POST /jobs| B[Django API]
-    B -->|< 200ms| A
-    B -->|Queue Task| C[Redis Queue]
-    C -->|FIFO| D[Celery Worker]
-    D -->|Step 1| E[GPT Summarize]
-    E -->|Step 2| F[GPT Checklist]
-    F -->|Save Results| G[PostgreSQL]
-    A -->|GET /jobs/{id}| B
-    B -->|Query Status| G
-    G -->|Return Result| B
-    B -->|Status/Result| A
+graph TD;
+    A[Client] -->|POST /jobs| B[Django API];
+    B -->|200ms response| A;
+    B -->|Queue Task| C[Redis Queue];
+    C -->|FIFO| D[Celery Worker];
+    D -->|Step 1| E[GPT Summarize];
+    E -->|Step 2| F[GPT Checklist];
+    F -->|Save Results| G[PostgreSQL];
+    A -->|GET /jobs/id| B;
+    B -->|Query Status| G;
+    G -->|Return Result| B;
+    B -->|Status and Result| A;
     
-    style A fill:#e1f5fe
-    style B fill:#f3e5f5
-    style C fill:#fff3e0
-    style D fill:#e8f5e8
-    style E fill:#fce4ec
-    style F fill:#fce4ec
-    style G fill:#e3f2fd
+    classDef client fill:#e1f5fe,stroke:#01579b,stroke-width:2px;
+    classDef api fill:#f3e5f5,stroke:#4a148c,stroke-width:2px;
+    classDef queue fill:#fff3e0,stroke:#e65100,stroke-width:2px;
+    classDef worker fill:#e8f5e8,stroke:#1b5e20,stroke-width:2px;
+    classDef gpt fill:#fce4ec,stroke:#880e4f,stroke-width:2px;
+    classDef db fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px;
+    
+    class A client;
+    class B api;
+    class C queue;
+    class D worker;
+    class E,F gpt;
+    class G db;
 ```
 
 ## Quick Start
