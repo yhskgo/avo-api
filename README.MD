@@ -5,7 +5,7 @@
 
 > Minimal backend API for automated guideline processing with AI-powered summarization and checklist generation.
 
-## System Architecture![AVO API Architecture](./assests/avo_api_architecture.png)
+## System Architecture
 
 ```mermaid
 graph TD;
@@ -36,14 +36,18 @@ graph TD;
     class G db;
 ```
 
+![AVO API Architecture](./assets/avo_api_architecture.png)
+
 ## Quick Start
 ```bash
 # Clone and start services
-git clone <repo-url>
+git clone https://github.com/yhskgo/avo-api.git
 cd avo-api
+cp .env.example .env
+# Edit .env with your OPENAI_API_KEY
 docker compose up --build
 
-# Run tests
+# Run tests (6 tests, comprehensive coverage)
 docker compose --profile test run test
 
 # API Documentation
@@ -54,24 +58,24 @@ http://localhost:8000/api/docs/
 - `POST /api/jobs` → Returns `event_id` in <200ms
 - `GET /api/jobs/{event_id}` → Job status and results
 - `GET /api/schema/` → OpenAPI specification
-- `GET /api/docs/` → Interactive documentation
+- `GET /api/docs/` → Interactive API documentation
 
 ## Design Choices
 
 **Tech Stack**: Django + Celery + Redis + PostgreSQL for:
 - **Sub-200ms response**: Immediate job queuing with async processing
-- **FIFO guarantee**: Redis queues ensure order preservation
+- **FIFO guarantee**: Redis queues ensure order preservation  
 - **Scalability**: Horizontal worker scaling with Celery
 - **Reliability**: PostgreSQL for persistent job state
 
 **Two-Stage GPT Chain**:
-1. **Summarize** guidelines using GPT-4o-mini
+1. **Summarize** guidelines using GPT-4o-mini/GPT-3.5-turbo
 2. **Generate** actionable checklist from summary
 
 **AI Tools Used**:
-- **Claude**: Architecture design, code structure, and comprehensive testing
-- **Mermaid**: System architecture diagram generation
-- **OpenAPI**: Automatic API documentation generation
-- **GPT Integration**: Content processing pipeline optimization
+- **Claude**: Complete system architecture, code structure, testing framework, and Docker deployment setup
+- **Mermaid**: Interactive system architecture diagram
+- **OpenAPI**: Automatic API documentation with drf-spectacular  
+- **GPT Integration**: Content processing pipeline with robust fallback handling
 
-Built with AI assistance for rapid development and deployment.
+Built with extensive AI assistance for rapid, production-ready development.
