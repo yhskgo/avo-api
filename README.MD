@@ -7,6 +7,8 @@
 
 ## System Architecture
 
+![AVO API Architecture](./assets/avo_api_architecture.png)
+
 ```mermaid
 graph TD;
     A[Client] -->|POST /jobs| B[Django API];
@@ -35,8 +37,6 @@ graph TD;
     class E,F gpt;
     class G db;
 ```
-
-![AVO API Architecture](./assets/avo_api_architecture.png)
 
 ## Quick Start
 ```bash
